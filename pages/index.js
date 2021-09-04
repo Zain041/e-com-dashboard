@@ -1,15 +1,22 @@
 import axios from 'axios';
+import { useEffect } from 'react';
 import Banner from "../components/Index/Banner";
 import CategoryBanner from "../components/Index/CategoryBanner";
 import HotProducts from "../components/Index/HotProducts";
 import baseUrl from '../utils/baseUrl';
+import Router from 'next/router';
+
+
 
 const Fashion = ({products}) => {
+   
+    useEffect(() => {
+       Router.push('/admin/dashboard')
+    }, []);
     return(
+       
         <>
-            <Banner />
-            <CategoryBanner />
-            <HotProducts products={products} />
+            <h1 className="text-center mt-5">Welcome Apna Store Admin</h1>
         </>
     );
 }

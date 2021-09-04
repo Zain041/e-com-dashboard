@@ -26,16 +26,11 @@ export default async (req, res) => {
 }
 
 const handleGetRequest = async (req, res) => {
-    const { id } = req.query;
-    const product = await Product.findOneAndUpdate(
-        { _id: id },
-        {$inc: {viewCount: 1} }
-    );
-    const { productType } = product;
-    const related = await Product.find({
-        productType: productType
-    }).sort({viewCount: 'desc'}).limit(4);
-    res.status(200).json({product, related});
+   
+   
+   
+    const categories = await Category.find().sort({viewCount: 'desc'})
+    res.status(200).json({categories});
 }
 
 const handlePostRequest = async (req, res) => {
@@ -62,31 +57,24 @@ const handlePostRequest = async (req, res) => {
 
 const handlePutRequest = async (req, res) => {
     // console.log(req.body)
-    const { _id, name, price, description, productType, mediaUrl } = req.body;
-    await Product.updateOne(
+    const { _id, categoryName,status } = req.body;
+    await Category.updateOne(
         {_id},
         {
-            $set: {name, price, description, productType, mediaUrl},
+            $set: {categoryName,status},
             $currentDate: { updatedAt: true }
         }
     )
     // console.log(up)
-    res.status(203).send('Product Updated');
+    res.status(203).send('Category Updated');
 }
 
 const handleDeleteRequest = async (req, res) => {
     const { _id } = req.query;
     try {
-        await Product.findByIdAndDelete({ _id });
-        await Cart.updateMany(
-            { "products.product": _id },
-            { $pull: { products:  {product: _id}} }
-        );
-        await Order.updateMany(
-            { "products.product": _id },
-            { $pull: { products:  {product: _id}} }
-        )
-        res.status(204).json({});
+        await Category.findByIdAndDelete({ _id });
+       
+        res.status(204).json({msg:"deleted"});
     } catch (error) {
         console.error(error);
         res.status(500).send('Error deleting products');

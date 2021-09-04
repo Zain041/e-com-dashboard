@@ -45,6 +45,10 @@ const AdminSidebar = ({children, user}) => {
                             <Icon name='users' />
                             Customers
                         </Menu.Item>
+                        <Menu.Item as='a' onClick={() => router.push('/admin/categories')} active={isActive('/admin/categories')}>
+                            <Icon name='users' />
+                            Categories
+                        </Menu.Item>
                         {isRoot && (
                             <>
                                 <Menu.Item as='a' onClick={() => router.push('/admin/users')} active={isActive('/admin/users')}>

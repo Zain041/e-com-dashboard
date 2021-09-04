@@ -8,6 +8,15 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    Address: {
+        type:String ,
+        required: true
+    },
+    status: {
+        type: String,
+        default:"pending"
+    },
+
     email: {
         type: String,
         required: true,

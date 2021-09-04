@@ -9,7 +9,7 @@ import Cart from '../../models/Cart';
 connectDb();
 
 export default async (req, res) => {
-    const { name, email, password } = req.body;
+    const { name, email, password,address } = req.body;
     try {
         // check email, name, password format
         if (!isLength(name, {min: 3, max: 15})) {
@@ -29,7 +29,8 @@ export default async (req, res) => {
         const newUser = await new User({
             name,
             email,
-            password: passwordHash
+            password: passwordHash,
+            address:address
         }).save();
         // console.log({newUser});
         // create a cart for the new user
