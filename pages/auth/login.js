@@ -32,7 +32,7 @@ const Login = () => {
         try {
             setLoading(true);
             setError('');
-            const url = `${baseUrl}/api/login`;
+            const url = `${baseUrl}/api/adminlogin`;
             const payload = {...user};
             const response = await axios.post(url, payload);
             handleLogin(response.data);

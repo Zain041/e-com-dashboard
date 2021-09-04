@@ -10,7 +10,8 @@ const AdminSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     password: {
         type: String,
@@ -19,7 +20,7 @@ const AdminSchema = new mongoose.Schema({
    
     mediaUrl: {
         type: String,
-        required: true
+        default:null
     },
     
 },{

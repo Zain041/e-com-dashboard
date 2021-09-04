@@ -7,7 +7,7 @@ import baseUrl from '../../utils/baseUrl';
 import { handleLogin } from '../../utils/auth';
 
 const INITIAL_USER = {
-    name: '',
+    fullName: '',
     email: '',
     password: ''
 };
@@ -33,7 +33,7 @@ const Signup = () => {
         try {
             setLoading(true);
             setError('');
-            const url = `${baseUrl}/api/signup`;
+            const url = `${baseUrl}/api/admin`;
             const payload = {...user};
             const response = await axios.post(url, payload);
             handleLogin(response.data);
@@ -66,8 +66,8 @@ const Signup = () => {
                         iconPosition="left"
                         label="Name"
                         placeholder="Name"
-                        name="name"
-                        value={user.name}
+                        name="fullName"
+                        value={user.fullName}
                         onChange={handleChange}
                     />
                     <Form.Input 

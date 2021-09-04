@@ -60,8 +60,8 @@ const handlePostRequest = async (req, res) => {
         const newUser = await new Admin({
             fullname,
             email,
-            password: passwordHash,
-            mediaUrl
+            password: password,
+            
         }).save();
         // console.log({newUser});
         // create a cart for the new user
