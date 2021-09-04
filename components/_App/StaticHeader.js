@@ -216,7 +216,7 @@ const StaticHeader = ({ user }) => {
             <div className="mobile only row">
                 <div className="ui fixed inverted navbar menu">
                     <Link href="/">
-                        <a className="brand item">Shoponix</a>
+                        <a className="brand item">Apna Store</a>
                     </Link>
                     <div className="right menu open">
                         <Link href="#">
@@ -227,7 +227,7 @@ const StaticHeader = ({ user }) => {
                     </div>
                 </div>
                 <div className={`ui vertical navbar menu ${menuActive ? 'mobile-active-show' : 'mobile-active-hide'}`}>
-                    <Link href="/">
+                    {/* <Link href="/">
                         <a className={`item ${isActive('/') ? 'active' : null}`} onClick={menuToggle}>
                             <i className="home icon"></i>
                             Home
@@ -321,7 +321,7 @@ const StaticHeader = ({ user }) => {
                     </Link>
                     <Link href="/about">
                         <a className={`item ${isActive('/about') ? 'active' : null}`} onClick={menuToggle}>About</a>
-                    </Link>
+                    </Link> */}
 
                     <div className="menu root-user">
                         {user ? (

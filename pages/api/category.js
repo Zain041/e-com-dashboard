@@ -26,16 +26,11 @@ export default async (req, res) => {
 }
 
 const handleGetRequest = async (req, res) => {
-    const { id } = req.query;
-    const product = await Product.findOneAndUpdate(
-        { _id: id },
-        {$inc: {viewCount: 1} }
-    );
-    const { productType } = product;
-    const related = await Product.find({
-        productType: productType
-    }).sort({viewCount: 'desc'}).limit(4);
-    res.status(200).json({product, related});
+   
+   
+   
+    const categories = await Category.find().sort({viewCount: 'desc'})
+    res.status(200).json({categories});
 }
 
 const handlePostRequest = async (req, res) => {
